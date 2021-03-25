@@ -15,7 +15,7 @@ class StudentImpl(override val name:String, override val year: Int) extends Stud
 
   private var coursesList : List[Course] = nil[Course]
 
-  override def enrolling(course: Course*): Unit = course foreach(c => coursesList = append(Cons(c, nil), coursesList))
+  override def enrolling(course: Course*): Unit = course foreach(c => coursesList = Cons(c, coursesList))
 
   override def courses: List[String] = map(coursesList)(c => c.name)
 
@@ -47,12 +47,6 @@ object Try extends App {
   s1.enrolling(cPPS, cPCD)
   s2.enrolling(cPPS)
   s3.enrolling(cPPS,cPCD,cSDR)
-//  s1.enrolling(cPPS)
-//  s1.enrolling(cPCD)
-//  s2.enrolling(cPPS)
-//  s3.enrolling(cPPS)
-//  s3.enrolling(cPCD)
-//  s3.enrolling(cSDR)
   println(s1.courses, s2.courses, s3.courses) // (Cons(PCD,Cons(PPS,Nil())),Cons(PPS,Nil()),Cons(SDR,Cons(PCD,Cons(PPS,Nil()))))
   println(s1.hasTeacher("Ricci")) // true
 }

@@ -1,7 +1,7 @@
 package u04lab.code
 
 import Optionals._
-import Lists._
+import Lists.List._
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions._
 
@@ -16,7 +16,7 @@ class PowerIteratorsTest {
     assertEquals(Option.of(7), pi.next())
     assertEquals(Option.of(9), pi.next())
     assertEquals(Option.of(11), pi.next())
-    assertEquals(List.Cons(5, List.Cons(7, List.Cons(9, List.Cons(11,List.Nil())))), pi.allSoFar()) // elementi già prodotti
+    assertEquals(Cons(5, Cons(7, Cons(9, Cons(11, Nil())))), pi.allSoFar()) // elementi già prodotti
     for (i <- 0 until 10) {
       pi.next() // procedo in avanti per un po'..
     }
@@ -48,7 +48,7 @@ class PowerIteratorsTest {
 
   @Test
   def testFromList(): Unit ={
-    val it = factory.fromList(List.Cons(1, List.Cons(2, List.Cons(3, List.Cons(4,List.Nil())))))
+    val it = factory.fromList(Cons(1, Cons(2, Cons(3, Cons(4,Nil())))))
     assertEquals(Option.of(1), it.next())
     assertEquals(Option.of(2), it.next())
     assertEquals(Option.of(3), it.next())
